@@ -8,18 +8,26 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 60,
     paddingHorizontal: 16,
+    paddingBottom: 80,
     backgroundColor: '#fff',
   },
 
-  header: {
+  header1: {
     fontSize: 32,
     marginBottom: 16,
     color: '#111827',
-    fontFamily: 'Merriweather-Regular',
+    fontFamily: 'Merriweather-Italic',
+  },
+
+  header2: {
+    fontSize: 20,
+    marginBottom: 16,
+    color: '#111827',
+    fontFamily: 'Merriweather-Italic',
   },
 
   carouselWrap: {
-    height: SQUARE_SIZE + 10,
+    height: 350
   },
 
   flatListContent: {

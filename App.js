@@ -3,13 +3,8 @@ import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
 import styles from './src/styles/style.js';
 import BottomBar from './src/components/BottomBar.js';
-
-// Mock danych książek
-const mockBooks = Array.from({ length: 10 }).map((_, i) => ({
-  id: String(i + 1),
-  title: `Książka ${i + 1}`,
-  color: i % 2 === 0 ? '#A3D8F4' : '#F4C2C2',
-}));
+import BookCard from './src/components/LibraryBookCard.js';
+import books from './src/data/books.js';
 
 export default function App() {
 
@@ -26,28 +21,18 @@ export default function App() {
 
   if (!fontsLoaded) return null;
 
-  const renderAllBooks = ({ item }) => (
-    <TouchableOpacity style={[styles.card, { backgroundColor: item.color }]}>
-      <Text style={styles.cardTitle} numberOfLines={3}>
-        {item.title}
-        {"\n"}
-        {"Autor: Jan Kowalski"}
-      </Text>
-    </TouchableOpacity>
-  );
-
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Biblioteka</Text>
+      <Text style={styles.header1}>Biblioteka</Text>
 
       {/* Wszystkie książki */}
       <View style={styles.carouselWrap}>
         <FlatList
-          data={mockBooks}
+          data={books}
           horizontal
           showsHorizontalScrollIndicator={false}
-          keyExtractor={(item) => item.id}
-          renderItem={renderAllBooks}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => <BookCard book={item} />}
           contentContainerStyle={styles.flatListContent}
         />
       </View>
@@ -65,7 +50,7 @@ export default function App() {
       </View>
 
       {/* Dolny pasek */}
-      <BottomBar activeTab={activeTab} setActiveTab={setActiveTab} />
+      {/* <BottomBar activeTab={activeTab} setActiveTab={setActiveTab} /> */}
     </View>
   );
 }

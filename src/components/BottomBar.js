@@ -6,7 +6,7 @@ export default function BottomBar({ activeTab, setActiveTab }) {
   return (
     <View style={styles.container}>
       
-      {/* Home */}
+      {/* Domek */}
       <TouchableOpacity onPress={() => setActiveTab('home')} style={styles.button}>
         <Ionicons
           name="home"
@@ -15,7 +15,7 @@ export default function BottomBar({ activeTab, setActiveTab }) {
         />
       </TouchableOpacity>
 
-      {/* Add */}
+      {/* Dodaj */}
       <TouchableOpacity onPress={() => setActiveTab('add')} style={styles.button}>
         <Ionicons
           name="add-circle"
