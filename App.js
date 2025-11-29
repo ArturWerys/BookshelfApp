@@ -3,8 +3,9 @@ import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
 import styles from './src/styles/style.js';
 import BottomBar from './src/components/BottomBar.js';
-import BookCard from './src/components/LibraryBookCard.js';
+import LibraryItemCard from './src/components/LibraryBookCard.js';
 import books from './src/data/books.js';
+import ReadBookCard from './src/components/ReadBookCard.js';
 
 export default function App() {
 
@@ -18,6 +19,8 @@ export default function App() {
     'Merriweather': require('./assets/fonts/Merriweather.ttf'),
     'Merriweather-Italic': require('./assets/fonts/Merriweather-Italic.ttf'),
   });
+  const firstBook = books[1];
+
 
   if (!fontsLoaded) return null;
 
@@ -32,22 +35,15 @@ export default function App() {
           horizontal
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => <BookCard book={item} />}
+          renderItem={({ item }) => <LibraryItemCard book={item} />}
           contentContainerStyle={styles.flatListContent}
         />
       </View>
 
-      {/* Przeczytane */}
-      <View style={styles.bookRow}>
-        <TouchableOpacity style={[styles.card, { backgroundColor: '#83cebfff' }]}>
-          <Text style={styles.cardTitle} numberOfLines={3}>Okładka</Text>
-        </TouchableOpacity>
+      <Text style={styles.header2}>Przeczytane</Text>
 
-        <View style={styles.authorContainer}>
-          <Text style={styles.cardTitle}>Bolesław Prus</Text>
-          <Text style={styles.cardTitle}>Lalka</Text>
-        </View>
-      </View>
+      {/* Pojedyncza książka */}
+      <ReadBookCard book={firstBook} />
 
       {/* Dolny pasek */}
       {/* <BottomBar activeTab={activeTab} setActiveTab={setActiveTab} /> */}

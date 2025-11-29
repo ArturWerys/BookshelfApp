@@ -1,5 +1,4 @@
-import React from 'react';
-import { View, Image, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
+import { Image, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 
 // Zwiększamy szerokość karty
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -34,7 +33,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 16,          // większy tekst
+    fontSize: 16,          
     fontFamily: 'Lora',
     textAlign: 'center',
   },

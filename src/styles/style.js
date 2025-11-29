@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
 
   carouselWrap: {
-    height: 350
+    height: 300
   },
 
   flatListContent: {
