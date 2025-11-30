@@ -19,7 +19,7 @@ export default function App() {
     'Merriweather': require('./assets/fonts/Merriweather.ttf'),
     'Merriweather-Italic': require('./assets/fonts/Merriweather-Italic.ttf'),
   });
-  const firstBook = books[1];
+  const firstBook = books[5];
 
 
   if (!fontsLoaded) return null;
@@ -39,6 +39,9 @@ export default function App() {
           contentContainerStyle={styles.flatListContent}
         />
       </View>
+
+      <View style={styles.separator} />
+
 
       <Text style={styles.header2}>Przeczytane</Text>
 

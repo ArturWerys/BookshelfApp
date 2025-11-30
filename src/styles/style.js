@@ -1,70 +1,43 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
+
 export const SQUARE_SIZE = Math.round(SCREEN_WIDTH * 0.28);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 60,
-    paddingHorizontal: 16,
-    paddingBottom: 80,
+    paddingHorizontal: 20,
     backgroundColor: '#fff',
   },
 
   header1: {
-    fontSize: 32,
-    marginBottom: 16,
+    fontSize: 34,
+    marginBottom: 10,         // ⬅ większy oddech
     color: '#111827',
     fontFamily: 'Merriweather-Italic',
   },
 
   header2: {
-    fontSize: 20,
-    marginBottom: 16,
+    fontSize: 22,
+    marginBottom: 10,
     color: '#111827',
     fontFamily: 'Merriweather-Italic',
   },
 
   carouselWrap: {
-    height: 300
+    height: 370,
+    paddingBottom: 4,         // ⬅ minimalny luz na dole
   },
 
-  flatListContent: {
-    paddingRight: 16,
+  separator: {
+    height: 1,
+    backgroundColor: '#E5E7EB',  // ⬅ jaśniejszy, subtelniejszy kolor
+    marginVertical: 16,          // ⬅ więcej przestrzeni
+    width: '100%',               
   },
 
-  card: {
-    width: SQUARE_SIZE,
-    height: SQUARE_SIZE,
-    borderRadius: 12,
-    marginRight: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    elevation: 3, // Android
-    shadowColor: '#000', // iOS
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.12,
-    shadowRadius: 4,
-  },
-
-  cardTitle: {
-    fontSize: 14,
-    color: '#111827',
-    textAlign: 'center',
-    paddingHorizontal: 6,
-    fontFamily: 'Lora',
-  },
-
-  bookRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 24,
-  },
-
-  authorContainer: {
-    marginLeft: 16,
-  },
 });
 
 export default styles;

@@ -1,9 +1,8 @@
-import { Image, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
+import { Image, Text, TouchableOpacity, StyleSheet, Dimensions, View } from 'react-native';
 
-// Zwiększamy szerokość karty
 const SCREEN_WIDTH = Dimensions.get('window').width;
-const CARD_WIDTH = SCREEN_WIDTH * 0.35; // większa karta
-const IMAGE_MAX_HEIGHT = 500;           // większa wysokość obrazka
+const CARD_WIDTH = SCREEN_WIDTH * 0.38;
+const IMAGE_MAX_HEIGHT = 500;
 
 export default function BookCard({ book }) {
   const imageHeight = Math.min(CARD_WIDTH * book.aspectRatio, IMAGE_MAX_HEIGHT);
@@ -12,14 +11,10 @@ export default function BookCard({ book }) {
     <TouchableOpacity style={styles.card}>
       <Image
         source={book.cover}
-        style={{
-          width: '100%',
-          height: imageHeight,
-          borderRadius: 12,
-          marginBottom: 8,
-        }}
-        resizeMode="contain"
+        style={[styles.cover, { height: imageHeight }]}
+        resizeMode="cover"
       />
+
       <Text style={styles.title} numberOfLines={2}>{book.title}</Text>
       <Text style={styles.author} numberOfLines={1}>{book.author}</Text>
     </TouchableOpacity>
@@ -28,19 +23,38 @@ export default function BookCard({ book }) {
 
 const styles = StyleSheet.create({
   card: {
-    width: CARD_WIDTH,
-    marginRight: 16,
-    alignItems: 'center',
+    width: CARD_WIDTH + 40,
+    height: CARD_WIDTH *2.3,
+    marginRight: 20,
+    padding: 12,
+    borderRadius: 16,
+    backgroundColor: "#f0f4f8",
+
+    // cień
+    shadowColor: "#156eccff",
+    shadowOpacity: 1,
+    shadowRadius: 8,
+    shadowOffset: { width: 1, height: 4 },
+    elevation: 3,
   },
+
+  cover: {
+    width: "100%",
+    borderRadius: 14,
+    marginBottom: 10,
+  },
+
   title: {
-    fontSize: 16,          
+    fontSize: 16,
     fontFamily: 'Lora',
-    textAlign: 'center',
+    marginTop: 2,
+    color: "#111827",
   },
+
   author: {
     fontSize: 14,
-    color: '#555',
     fontFamily: 'Inter',
-    textAlign: 'center',
+    color: "#6B7280",
+    marginTop: 4,
   },
 });

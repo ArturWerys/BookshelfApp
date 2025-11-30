@@ -38,7 +38,7 @@ const books = [
   },
   {
     id: 5,
-    title: "Stary Człowiek i Morze",
+    title: "Stary Człowiek i  Morze",
     author: "Ernest Hemingway",
     cover: require("../../assets/covers/StaryCzlowiekIMorze.jpeg"),
     rating: 4.5,
@@ -51,7 +51,7 @@ const books = [
     author: "Fiodor Dostojewski",
     cover: require("../../assets/covers/ZbrodniaIKara.jpeg"),
     rating: 4.5,
-    description: "Placeholder",
+    description: "To miejsce na refleksje, przemyślenia i wrażenia związane z lekturą.",
     aspectRatio: 1600 / 1000 // height / width
   },
 ];
