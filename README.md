@@ -1,8 +1,11 @@
-# Bookshelf App
+# 🕮 Bookshelf App by Artur Werys
+**Version for first presentation: 1.12.2025**
+---
 
 ## Goal
-This is my project for C# classes. The main goal is to create a full-stack mobile application.  
-Bookshelf is an app that allows users to build and manage their own personal library of books.
+This is my project for C# classes.  
+The main goal is to create a **full-stack mobile application**.  
+Bookshelf allows users to **build and manage their personal library of books**.
 
 ## Project Description
 In this app, a user will be able to:
@@ -11,11 +14,11 @@ In this app, a user will be able to:
 - Add books to a "Want to Read" shelf
 
 The app will also include a **statistics tab**, showing:
-- How many books the user has read in a month
-- Book genres breakdown
-- Average rating per month or per genre  
+- Number of books read per month
+- Breakdown by genres
+- Average rating per month / per genre  
 
-All these data will be stored in an SQL database, with C# used for database connection and backend logic.
+All these data will be stored in an **SQL database**, with **C#** used for database connection and backend logic.
 
 ## Technologies Used for First Version (as of 1.12.2025)
 - Programming language: JavaScript
@@ -29,11 +32,6 @@ For the backend and database:
 - C# .NET
 - SQL
 
-## Possible Enhancements
-- Connect to **Google Books API** to fetch book data automatically
-- Add advanced filtering and sorting in the library
-- Show reading statistics with charts (e.g., monthly progress, top genres)
-
 ## Current Status
 - Scrollable list of 6 books with covers
 - Read book section with:
@@ -44,8 +42,32 @@ For the backend and database:
 - Custom fonts loaded via Expo
 - Modular structure for easy expansion
 
-## Screen shot of current UI
-  <img src="assets/presentation/UI_Presentation1.png" alt="ScreenShot" width="300" />
-  
-## Gif of UI  
-<img src="assets/presentation/GIF_Presentation1.gif" alt="GIF" width="300" />
+---
+
+## UI Screenshots
+<div style="display: flex; justify-content: center; align-items: flex-start; gap: 50px; flex-wrap: wrap;">
+
+--- 
+### Screenshot
+  <!-- UI screenshot -->
+  <div style="text-align: center;">
+    <img src="assets/presentation/UI_Presentation1.png" alt="Library UI" width="300" />
+  </div>
+
+--- 
+### GIF
+  <!-- GIF -->
+  <div style="text-align: center;">
+    <img src="assets/presentation/GIF_Presentation1.gif" alt="Read Book GIF" width="300" />
+  </div>
+
+</div>
+
+--- 
+
+## Next Steps
+- Implement SQL backend with C# .NET
+- Show reading statistics with charts (monthly progress, top genres)
+- Add "Add Book" functionality
+- Add advanced filtering and sorting in the library
+- Connect to **Google Books API** to fetch book data automatically
