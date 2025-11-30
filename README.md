@@ -3,11 +3,11 @@
 ---
 
 ## Goal
-This is my project for C# classes.  
-The main goal is to create a **full-stack mobile application**.  
-Bookshelf allows users to **build and manage their personal library of books**.
+- This is my project for C# classes.  
+- The main goal is to create a **full-stack mobile application**.  
+- Bookshelf app allows users to **build and manage their personal library of books**.
 
-## Project Description
+## Project description
 In this app, a user will be able to:
 - Search for books
 - Mark books as "read" and rate them using stars, write a short review, and save the exact date they finished reading
@@ -20,19 +20,19 @@ The app will also include a **statistics tab**, showing:
 
 All these data will be stored in an **SQL database**, with **C#** used for database connection and backend logic.
 
-## Technologies Used for First Version (as of 1.12.2025)
+## Technologies used for first version (as of 1.12.2025)
 - Programming language: JavaScript
 - Frameworks: React Native + Expo
 - Fonts: Imported from Google Fonts
 - Book covers: From Pinterest (these images are **not owned by me**; you can see the originals and authors on my Pinterest board)  
   [BookShelf Pinterest Board](https://pin.it/3ak0sS5vK)
 
-## Planned Future Technologies
+## Planned future technologies
 For the backend and database:
 - C# .NET
 - SQL
 
-## Current Status
+## Current status
 - Scrollable list of 6 books with covers
 - Read book section with:
   - Cover image
@@ -65,7 +65,7 @@ For the backend and database:
 
 --- 
 
-## Next Steps
+## Next steps
 - Implement SQL backend with C# .NET
 - Show reading statistics with charts (monthly progress, top genres)
 - Add "Add Book" functionality
