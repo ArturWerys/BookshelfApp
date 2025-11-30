@@ -41,7 +41,11 @@ For the backend and database:
   - Title, author
   - Star rating
   - Short description
- 
-
 - Custom fonts loaded via Expo
 - Modular structure for easy expansion
+
+## Screen shot of current UI
+  <img src="assets/presentation/UI_Presentation1.png" alt="ScreenShot" width="300" />
+  
+## Gif of UI  
+<img src="assets/presentation/GIF_Presentation1.gif" alt="GIF" width="300" />
