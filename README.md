@@ -3,7 +3,7 @@
 ---
 
 ## Goal
-- This is my project for C# classes.  
+- This is my C# coursework project.
 - The main goal is to create a **full-stack mobile application**.  
 - Bookshelf app allows users to **build and manage their personal library of books**.
 
