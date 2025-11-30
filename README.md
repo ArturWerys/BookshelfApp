@@ -22,7 +22,7 @@ All these data will be stored in an SQL database, with C# used for database conn
 - Frameworks: React Native + Expo
 - Fonts: Imported from Google Fonts
 - Book covers: From Pinterest (these images are **not owned by me**; you can see the originals and authors on my Pinterest board)  
-  [Pinterest Board](https://pin.it/3ak0sS5vK)
+  [BookShelf Pinterest Board](https://pin.it/3ak0sS5vK)
 
 ## Planned Future Technologies
 For the backend and database:
@@ -33,15 +33,15 @@ For the backend and database:
 - Connect to **Google Books API** to fetch book data automatically
 - Add advanced filtering and sorting in the library
 - Show reading statistics with charts (e.g., monthly progress, top genres)
-- Implement notifications or reminders for "Want to Read" books
 
 ## Current Status
-- Scrollable list of books with covers
-- Read book view with:
+- Scrollable list of 6 books with covers
+- Read book section with:
   - Cover image
   - Title, author
   - Star rating
   - Short description
-- Bottom navigation bar
+ 
+
 - Custom fonts loaded via Expo
 - Modular structure for easy expansion
