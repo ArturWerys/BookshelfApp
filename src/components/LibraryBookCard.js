@@ -1,8 +1,8 @@
 import { Image, Text, TouchableOpacity, StyleSheet, Dimensions, View } from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
-const CARD_WIDTH = SCREEN_WIDTH * 0.38;
-const IMAGE_MAX_HEIGHT = 500;
+const CARD_WIDTH = SCREEN_WIDTH * 0.35;
+const IMAGE_MAX_HEIGHT = 250;
 
 export default function BookCard({ book }) {
   const imageHeight = Math.min(CARD_WIDTH * book.aspectRatio, IMAGE_MAX_HEIGHT);
@@ -24,7 +24,7 @@ export default function BookCard({ book }) {
 const styles = StyleSheet.create({
   card: {
     width: CARD_WIDTH + 40,
-    height: CARD_WIDTH *2.3,
+    height: CARD_WIDTH * 2.25,
     marginRight: 20,
     padding: 12,
     borderRadius: 16,
