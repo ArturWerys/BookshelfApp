@@ -32,7 +32,6 @@ export default function AddBookCard() {
         <View style={{ flex: 1 }}>
 
             <View style={styles.container}>
-                {/* Pole do wpisania */}
                 <TextInput
                     style={styles.input}
                     value={searchText}

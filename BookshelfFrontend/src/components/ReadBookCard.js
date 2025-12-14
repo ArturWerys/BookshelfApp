@@ -11,7 +11,6 @@ export default function ReadBookCard({ book }) {
   return (
     <View style={styles.card}>
 
-      {/* OBRAZ + TEKST */}
       <View style={styles.row}>
         <Image
           source={book.cover}
@@ -36,7 +35,6 @@ export default function ReadBookCard({ book }) {
         </View>
       </View>
 
-      {/* OPIS */}
       <Text style={styles.description} numberOfLines={2}>
         {book.description}
       </Text>
@@ -76,9 +74,8 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 20,
+    fontSize: 25,
     fontFamily: 'Lora',
-    fontWeight: 'bold',
     color: "#111827",
   },
   author: {

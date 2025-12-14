@@ -5,12 +5,12 @@ import styles from './src/styles/style.js';
 import BottomBar from './src/components/BottomBar.js';
 import LibraryItemCard from './src/components/LibraryBookCard.js';
 import ReadBookCard from './src/components/ReadBookCard.js';
-import AddBookCard from './src/components/AddBookCard.js'; // nowy ekran
-import booksStatic from './src/data/books.js'; // dla ReadBookCard
+import AddBookCard from './src/components/AddBookCard.js'; 
+import booksStatic from './src/data/books.js';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
-  const firstBook = booksStatic[5];
+  const firstBook = booksStatic[2];
   const [books, setBooks] = useState([]); // książki z backendu
 
 
@@ -69,7 +69,7 @@ export default function App() {
       {/* Add Book Screen */}
       {activeTab === 'add_book' && <AddBookCard />}
 
-      {/* Dolny pasek */}
+      {/* Bottom Bar */}
       <BottomBar activeTab={activeTab} setActiveTab={setActiveTab} />
     </View>
   );

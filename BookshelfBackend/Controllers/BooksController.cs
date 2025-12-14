@@ -12,6 +12,8 @@ public class BooksController : ControllerBase
         _context = context;
     }
 
+    // Wszystkie książki
+
     [HttpGet]
     public async Task<IActionResult> GetBooks()
     {
@@ -19,7 +21,8 @@ public class BooksController : ControllerBase
         return Ok(books);
     }
 
-    
+    // Jedna książka 
+
     [HttpGet("{id}")]
     public async Task<ActionResult<Book>> GetBook(int id)
     {
@@ -43,7 +46,7 @@ public class BooksController : ControllerBase
         return books;
     }
 
-
+    // W prszyłości - dodwania książek do bazy
     [HttpPost]
     public async Task<IActionResult> AddBook(Book book)
     {

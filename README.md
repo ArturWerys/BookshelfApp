@@ -51,14 +51,14 @@ For the backend and database:
 ### Screenshot
   <!-- UI screenshot -->
   <div style="text-align: center;">
-    <img src="assets/presentation/UI_Presentation1.png" alt="Library UI" width="300" />
+    <img src="BookshelfFrontend/assets/presentation/UI_Presentation1.png" alt="Library UI" width="300" />
   </div>
 
 --- 
 ### GIF
   <!-- GIF -->
   <div style="text-align: center;">
-    <img src="assets/presentation/GIF_Presentation1.gif" alt="Read Book GIF" width="300" />
+    <img src="BookshelfFrontend/assets/presentation/GIF_Presentation1.gif" alt="Read Book GIF" width="300" />
   </div>
 
 </div>
