@@ -31,6 +31,19 @@ public class BooksController : ControllerBase
         return book;
     }
 
+
+    // Wyszukiwanie książek po nazwie 
+    [HttpGet("search")]
+    public async Task<ActionResult<IEnumerable<Book>>> SearchBooks([FromQuery] string query)
+    {
+        var books = await _context.Books
+            .Where(b => b.Title.ToLower().Contains(query.ToLower()))
+            .ToListAsync();
+
+        return books;
+    }
+
+
     [HttpPost]
     public async Task<IActionResult> AddBook(Book book)
     {

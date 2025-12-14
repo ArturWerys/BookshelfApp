@@ -18,7 +18,7 @@ namespace BookshelfBackend
 
             app.MapControllers();
 
-            app.UseStaticFiles(); // Do ok³adek - styatycznych plików DB
+            app.UseStaticFiles(); 
 
             app.Run();
 
