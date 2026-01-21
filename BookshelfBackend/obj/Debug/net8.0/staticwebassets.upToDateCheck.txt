@@ -1,6 +1,0 @@
-wwwroot\covers\KamienFilozoficzny.jpeg
-wwwroot\covers\KrewElfow.jpeg
-wwwroot\covers\PozegnanieZBronia.jpg
-wwwroot\covers\StaryCzlowiekIMorze.jpeg
-wwwroot\covers\ZanimWystygnieKawa.jpeg
-wwwroot\covers\ZbrodniaIKara.jpeg
