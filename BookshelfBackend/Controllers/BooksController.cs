@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BookshelfBackend;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 [ApiController]
@@ -23,7 +24,7 @@ public class BooksController : ControllerBase
 
     // Jedna książka 
 
-    [HttpGet("{id}")]
+    [HttpGet("{id:int}")]
     public async Task<ActionResult<Book>> GetBook(int id)
     {
         var book = await _context.Books.FindAsync(id);
@@ -46,12 +47,48 @@ public class BooksController : ControllerBase
         return books;
     }
 
-    // W prszyłości - dodwania książek do bazy
-    [HttpPost]
-    public async Task<IActionResult> AddBook(Book book)
+    // Dodawanie książek do bazy
+    [HttpPost("with-cover")]
+    [Consumes("multipart/form-data")]
+    public async Task<IActionResult> AddBookWithCover(
+    [FromForm] CreateBookWithCover newBook,
+    [FromForm] IFormFile cover)
     {
+        if (cover == null || cover.Length == 0)
+            return BadRequest("Cover image is required");
+
+        var uploadsPath = Path.Combine("wwwroot", "covers");
+        Directory.CreateDirectory(uploadsPath);
+
+        var fileExtension = Path.GetExtension(cover.FileName);
+        var fileName = $"{Guid.NewGuid()}{fileExtension}";
+        var filePath = Path.Combine(uploadsPath, fileName);
+
+        using (var stream = new FileStream(filePath, FileMode.Create))
+        {
+            await cover.CopyToAsync(stream);
+        }
+
+        var book = new Book
+        {
+            Title = newBook.Title,
+            Author = newBook.Author,
+            IsRead = newBook.IsRead,
+
+            ReadDate = newBook.IsRead ? newBook.ReadDate : null,
+            Rating = newBook.IsRead ? newBook.Rating : null,
+            Review = newBook.IsRead ? newBook.Review : null,
+
+            LiteraryGenre = newBook.LiteraryGenre,
+            CoverPath = $"/covers/{fileName}"
+        };
+
+
         _context.Books.Add(book);
         await _context.SaveChangesAsync();
-        return CreatedAtAction(nameof(GetBooks), new { id = book.Id }, book);
+
+        return CreatedAtAction(nameof(GetBook), new { id = book.Id }, book);
     }
+
+
 }

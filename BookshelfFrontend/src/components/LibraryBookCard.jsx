@@ -1,11 +1,18 @@
-import { Image, Text, TouchableOpacity, StyleSheet, Dimensions, View } from 'react-native';
+import {
+  Image,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Dimensions,
+  View,
+} from "react-native";
 
-const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_WIDTH = Dimensions.get("window").width;
 const CARD_WIDTH = SCREEN_WIDTH * 0.35;
 const IMAGE_MAX_HEIGHT = 250;
-const ASPECT_RATIO = 1600 / 1000; 
+const ASPECT_RATIO = 1600 / 1000;
 
-export default function BookCard({ book }) {
+export default function LibraryBookCard({ book }) {
   const imageHeight = Math.min(CARD_WIDTH * ASPECT_RATIO, IMAGE_MAX_HEIGHT);
 
   return (
@@ -16,8 +23,12 @@ export default function BookCard({ book }) {
         resizeMode="cover"
       />
 
-      <Text style={styles.title} numberOfLines={2}>{book.title}</Text>
-      <Text style={styles.author} numberOfLines={1}>{book.author}</Text>
+      <Text style={styles.title} numberOfLines={2}>
+        {book.title}
+      </Text>
+      <Text style={styles.author} numberOfLines={1}>
+        {book.author}
+      </Text>
     </TouchableOpacity>
   );
 }
@@ -46,14 +57,14 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 16,
-    fontFamily: 'Lora',
+    fontFamily: "Lora",
     marginTop: 2,
     color: "#111827",
   },
 
   author: {
     fontSize: 14,
-    fontFamily: 'Inter',
+    fontFamily: "Inter",
     color: "#6B7280",
     marginTop: 4,
   },

@@ -31,7 +31,7 @@ export default function AddBookCard() {
 
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images, // poprawny enum
+        mediaTypes: ImagePicker.Images,
         quality: 1,
         allowsEditing: true, // opcjonalnie przycinanie
       });
@@ -123,13 +123,6 @@ export default function AddBookCard() {
         style={styles.input}
       />
       <TextInput
-        placeholder="Ocena (1-5)"
-        value={rating}
-        onChangeText={setRating}
-        style={styles.input}
-        keyboardType="numeric"
-      />
-      <TextInput
         placeholder="Gatunek"
         value={genre}
         onChangeText={setGenre}
@@ -148,13 +141,20 @@ export default function AddBookCard() {
       {isRead && (
         <>
           <TextInput
-            placeholder="Data przeczytania (YYYY-MM-DD)"
+            placeholder="Data przeczytania (RRRR-MM-DD)"
             value={readDate}
             onChangeText={setReadDate}
             style={styles.input}
           />
           <TextInput
-            placeholder="Recenzja"
+            placeholder="Ocena (1-5)"
+            value={rating}
+            onChangeText={setRating}
+            style={styles.input}
+            keyboardType="numeric"
+          />
+          <TextInput
+            placeholder="Przemyślenia o książce"
             value={review}
             onChangeText={setReview}
             style={styles.input}

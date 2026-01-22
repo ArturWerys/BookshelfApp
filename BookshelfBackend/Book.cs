@@ -15,7 +15,7 @@ public class Book
 
     public string Author { get; set; }
 
-    public int Rating { get; set; } 
+    public int? Rating { get; set; } 
 
     public string CoverPath { get; set; }
 

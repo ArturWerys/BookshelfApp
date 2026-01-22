@@ -37,14 +37,20 @@ namespace BookshelfBackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Rating")
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LiteraryGenre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Rating")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ReadDate")
+                    b.Property<DateTime?>("ReadDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Review")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
