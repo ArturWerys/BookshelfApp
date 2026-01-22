@@ -11,6 +11,7 @@ import {
   ScrollView,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import stylesFile from "../styles/style.js"; // Twój plik ze stylami fontów itp.
 
 export default function AddBookCard() {
   const [title, setTitle] = useState("");
@@ -33,7 +34,7 @@ export default function AddBookCard() {
       const result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.Images,
         quality: 1,
-        allowsEditing: true, // opcjonalnie przycinanie
+        allowsEditing: true,
       });
 
       if (!result.canceled && result.assets && result.assets.length > 0) {
@@ -62,7 +63,6 @@ export default function AddBookCard() {
     formData.append("ReadDate", isRead && readDate ? readDate : "");
     formData.append("LiteraryGenre", genre);
 
-    // Recenzja tylko jeśli przeczytano
     if (isRead) {
       formData.append("Review", review);
     }
@@ -110,6 +110,7 @@ export default function AddBookCard() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <Text style={stylesFile.header1}>Dodaj książkę</Text>
       <TextInput
         placeholder="Tytuł"
         value={title}
@@ -129,15 +130,16 @@ export default function AddBookCard() {
         style={styles.input}
       />
 
-      {/* Switch dla IsRead */}
-      <View
-        style={{ flexDirection: "row", alignItems: "center", marginBottom: 12 }}
-      >
-        <Text>Przeczytana: </Text>
-        <Switch value={isRead} onValueChange={setIsRead} />
+      <View style={styles.switchRow}>
+        <Text style={styles.switchLabel}>Przeczytana:</Text>
+        <Switch
+          value={isRead}
+          onValueChange={setIsRead}
+          thumbColor="#a5b4fc"
+          trackColor={{ true: "#e0e7ff", false: "#c7d2fe" }}
+        />
       </View>
 
-      {/* Pola tylko jeśli przeczytano */}
       {isRead && (
         <>
           <TextInput
@@ -162,7 +164,6 @@ export default function AddBookCard() {
         </>
       )}
 
-      {/* Przyciski */}
       <TouchableOpacity style={styles.button} onPress={pickImage}>
         <Text style={styles.buttonText}>Wybierz okładkę</Text>
       </TouchableOpacity>
@@ -170,7 +171,7 @@ export default function AddBookCard() {
       {cover && (
         <Image
           source={{ uri: cover.uri }}
-          style={{ width: 100, height: 150, marginTop: 10 }}
+          style={{ width: 100, height: 150, marginTop: 10, borderRadius: 12 }}
         />
       )}
 
@@ -188,24 +189,75 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     padding: 20,
-    justifyContent: "center",
     backgroundColor: "#f0f4f8",
+    justifyContent: "center",
   },
+
   input: {
     height: 50,
-    backgroundColor: "#fff",
+    backgroundColor: "#f9fafb",
     borderRadius: 12,
     paddingHorizontal: 16,
     marginBottom: 12,
+    fontFamily: "Lora",
+    fontSize: 14,
+    color: "#0f172a",
   },
+
   button: {
-    backgroundColor: "#2563EB",
+    backgroundColor: "#3b82f6",
     paddingVertical: 14,
     borderRadius: 12,
     alignItems: "center",
   },
   buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
+    color: "#ffffff",
+    fontFamily: "Lora",
+    fontWeight: "600",
+  },
+  card: {
+    backgroundColor: "#ffffff",
+    borderRadius: 16,
+    padding: 16,
+    shadowColor: "#156eccff",
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    shadowOffset: { width: 1, height: 4 },
+    elevation: 3,
+  },
+  header2: {
+    fontSize: 20,
+    fontFamily: "Lora",
+    fontWeight: "600",
+    color: "#0f172a",
+    marginBottom: 16,
+  },
+  switchRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 12,
+  },
+  switchLabel: {
+    fontFamily: "Lora",
+    fontSize: 16,
+    color: "#0f172a",
+    marginRight: 8,
+  },
+  button: {
+    backgroundColor: "#60a5fa",
+    paddingVertical: 14,
+    borderRadius: 12,
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "#ffffff",
+    fontFamily: "Lora",
+    fontWeight: "600",
+  },
+  coverPreview: {
+    width: 100,
+    height: 150,
+    marginTop: 12,
+    borderRadius: 12,
   },
 });

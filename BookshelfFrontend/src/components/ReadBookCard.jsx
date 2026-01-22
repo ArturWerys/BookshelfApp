@@ -1,29 +1,32 @@
-import { View, Image, Text, Dimensions, StyleSheet } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { View, Image, Text, Dimensions, StyleSheet } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 
-const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_WIDTH = Dimensions.get("window").width;
 const CARD_WIDTH = SCREEN_WIDTH * 0.34;
-const IMAGE_MAX_HEIGHT = 500;
+const IMAGE_MAX_HEIGHT = 700;
 
 export default function ReadBookCard({ book }) {
-  const imageHeight = Math.min(CARD_WIDTH * book.aspectRatio, IMAGE_MAX_HEIGHT);
+  const imageHeight = Math.min(
+    CARD_WIDTH * (book.aspectRatio || 1.5),
+    IMAGE_MAX_HEIGHT,
+  );
 
   return (
     <View style={styles.card}>
-
       <View style={styles.row}>
         <Image
-          source={book.cover}
-          style={[
-            styles.cover,
-            { width: CARD_WIDTH, height: imageHeight }
-          ]}
+          source={{ uri: `http://10.0.2.2:5184/${book.coverPath}` }}
+          style={[styles.cover, { width: CARD_WIDTH, height: imageHeight }]}
           resizeMode="cover"
         />
 
         <View style={styles.textContainer}>
-          <Text style={styles.title} numberOfLines={2}>{book.title}</Text>
-          <Text style={styles.author} numberOfLines={1}>{book.author}</Text>
+          <Text style={styles.title} numberOfLines={2}>
+            {book.title}
+          </Text>
+          <Text style={styles.author} numberOfLines={1}>
+            {book.author}
+          </Text>
 
           <View style={styles.stars}>
             <MaterialIcons name="star" size={22} color="#FACC15" />
@@ -36,9 +39,8 @@ export default function ReadBookCard({ book }) {
       </View>
 
       <Text style={styles.description} numberOfLines={2}>
-        {book.description}
+        {book.review}
       </Text>
-
     </View>
   );
 }
@@ -56,11 +58,11 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     shadowOffset: { width: 0, height: 4 },
     elevation: 3,
-    marginBottom: 24
+    marginBottom: 24,
   },
 
   row: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
 
   cover: {
@@ -70,23 +72,23 @@ const styles = StyleSheet.create({
 
   textContainer: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 
   title: {
     fontSize: 25,
-    fontFamily: 'Lora',
+    fontFamily: "Lora",
     color: "#111827",
   },
   author: {
     fontSize: 16,
     color: "#6B7280",
-    fontFamily: 'Inter',
+    fontFamily: "Inter",
     marginTop: 6,
   },
 
   stars: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginTop: 10,
   },
 
@@ -94,7 +96,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
     fontSize: 14,
     lineHeight: 20,
-    color: '#4B5563',
-    fontFamily: 'Inter',
+    color: "#4B5563",
+    fontFamily: "Inter",
   },
 });

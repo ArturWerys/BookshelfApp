@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { View, Text } from "react-native";
+import { ScrollView, View, Text } from "react-native";
 import { PieChart } from "react-native-gifted-charts";
+import styles from "../styles/style.js"; // Twój plik ze stylami fontów itp.
 
 const StatsCard = () => {
   const [books, setBooks] = useState([]);
@@ -21,7 +22,7 @@ const StatsCard = () => {
           genreCount[genre] = (genreCount[genre] || 0) + 1;
         });
 
-        const colors = ["#009FFF", "#93FCF8", "#BDB2FA", "#FFA5BA", "#FFCD6B"];
+        const colors = ["#3b82f6", "#60a5fa", "#a5b4fc", "#c7d2fe", "#e0e7ff"];
         const genereChartData = Object.entries(genreCount)
           .map(([genre, count], idx) => ({
             value: count,
@@ -33,7 +34,6 @@ const StatsCard = () => {
 
         setGenerePieData(genereChartData);
 
-        // 2️⃣ Przeczytane / Nieprzeczytane
         const readCount = data.filter((b) => b.isRead).length;
         const unreadCount = data.length - readCount;
         const percentRead = Math.round((readCount / data.length) * 100);
@@ -41,14 +41,14 @@ const StatsCard = () => {
         const readPieData = [
           {
             value: readCount,
-            color: "#009FFF", // pasuje do pierwszego wykresu
-            gradientCenterColor: "#006DFF",
+            color: "#3b82f6",
+            gradientCenterColor: "#60a5fa",
             label: "Przeczytane",
           },
           {
             value: unreadCount,
-            color: "#BDB2FA", // pasuje do pierwszego wykresu
-            gradientCenterColor: "#8F80F3",
+            color: "#a5b4fc",
+            gradientCenterColor: "#c7d2fe",
             label: "Nieprzeczytane",
           },
         ];
@@ -72,56 +72,81 @@ const StatsCard = () => {
   );
 
   const renderLegendComponent = (data) => {
-    return data.map((item, index) => (
-      <View
-        key={index}
-        style={{ flexDirection: "row", alignItems: "center", marginBottom: 5 }}
-      >
-        {renderDot(item.color)}
-        <Text style={{ color: "white" }}>
-          {item.label}: {item.value} {item.value === 1 ? "książka" : "książek"}
-        </Text>
+    return (
+      <View style={{ paddingLeft: 8, marginTop: 8 }}>
+        {data.map((item, index) => (
+          <View
+            key={index}
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginBottom: 6,
+            }}
+          >
+            {renderDot(item.color)}
+            <Text
+              style={{ color: "#111827", fontFamily: "Lora", fontSize: 16 }}
+            >
+              {item.label}: {item.value}
+            </Text>
+          </View>
+        ))}
       </View>
-    ));
+    );
   };
 
   return (
-    <View style={{ paddingVertical: 20, flex: 1, backgroundColor: "#34448B" }}>
+    <ScrollView
+      style={{ flex: 1, backgroundColor: "#f0f4f8" }}
+      contentContainerStyle={{ paddingVertical: 30 }}
+      showsVerticalScrollIndicator={false}
+    >
       {/* Wykres gatunków */}
       <View
         style={{
           margin: 20,
-          padding: 16,
-          borderRadius: 20,
-          backgroundColor: "#232B5D",
+          marginTop: 40,
+          padding: 12,
+          borderRadius: 16,
+          backgroundColor: "#ffffff", // dopasowane do LibraryBookCard
+          shadowColor: "#156eccff",
+          shadowOpacity: 1,
+          shadowRadius: 8,
+          shadowOffset: { width: 1, height: 4 },
+          elevation: 3,
         }}
       >
-        <Text style={{ color: "white", fontSize: 16, fontWeight: "bold" }}>
-          Książki według gatunku
-        </Text>
-        <View style={{ padding: 20, alignItems: "center" }}>
+        <Text style={styles.header2}>Książki według gatunku</Text>
+        <View style={{ padding: 16, alignItems: "center" }}>
           <PieChart
             data={generePieData}
             donut
             showGradient
             sectionAutoFocus
-            radius={100}
-            innerRadius={70}
-            innerCircleColor={"#232B5D"}
+            radius={90}
+            innerRadius={60}
+            innerCircleColor={"#ffffff"} // dopasowane do karty
             centerLabelComponent={() => (
               <View style={{ justifyContent: "center", alignItems: "center" }}>
                 {generePieData.length > 0 && (
                   <>
                     <Text
                       style={{
-                        fontSize: 22,
-                        color: "white",
-                        fontWeight: "bold",
+                        fontSize: 20,
+                        color: "#0f172a",
+                        fontFamily: "Lora",
+                        fontWeight: "600",
                       }}
                     >
                       {generePieData[0].value}
                     </Text>
-                    <Text style={{ fontSize: 14, color: "white" }}>
+                    <Text
+                      style={{
+                        fontSize: 20,
+                        color: "#475569",
+                        fontFamily: "Lora",
+                      }}
+                    >
                       {generePieData[0].label}
                     </Text>
                   </>
@@ -130,35 +155,43 @@ const StatsCard = () => {
             )}
           />
         </View>
-        {renderLegendComponent(generePieData)}
+        <ScrollView style={{ maxHeight: 120 }}>
+          {renderLegendComponent(generePieData)}
+        </ScrollView>
       </View>
 
       {/* Wykres przeczytane / nieprzeczytane */}
       <View
         style={{
           marginHorizontal: 20,
-          marginTop: 20,
-          padding: 16,
-          borderRadius: 20,
-          backgroundColor: "#232B5D",
-          alignItems: "center",
+          padding: 12,
+          borderRadius: 16,
+          backgroundColor: "#ffffff", // dopasowane do LibraryBookCard
+          shadowColor: "#156eccff",
+          shadowOpacity: 1,
+          shadowRadius: 8,
+          shadowOffset: { width: 1, height: 4 },
+          elevation: 3,
         }}
       >
-        <Text style={{ color: "white", fontSize: 16, fontWeight: "bold" }}>
-          Przeczytane / Nieprzeczytane
-        </Text>
-        <View style={{ padding: 20, alignItems: "center" }}>
+        <Text style={styles.header2}>Przeczytane i nieprzeczytane</Text>
+        <View style={{ padding: 16, alignItems: "center" }}>
           <PieChart
             data={readPieData}
             donut
             showGradient
             sectionAutoFocus
-            radius={90}
-            innerRadius={70}
-            innerCircleColor={"#232B5D"}
+            radius={80}
+            innerRadius={55}
+            innerCircleColor={"#ffffff"}
             centerLabelComponent={() => (
               <Text
-                style={{ fontSize: 22, color: "white", fontWeight: "bold" }}
+                style={{
+                  fontSize: 20,
+                  color: "#0f172a",
+                  fontFamily: "Lora",
+                  fontWeight: "600",
+                }}
               >
                 {readPercent}%
               </Text>
@@ -167,7 +200,7 @@ const StatsCard = () => {
         </View>
         {renderLegendComponent(readPieData)}
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

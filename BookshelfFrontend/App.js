@@ -22,12 +22,22 @@ export default function App() {
     Merriweather: require("./assets/fonts/Merriweather.ttf"),
     "Merriweather-Italic": require("./assets/fonts/Merriweather-Italic.ttf"),
   });
-
+  const [randomReadBook, setRandomReadBook] = useState(null);
   useEffect(() => {
     if (activeTab === "home") {
       fetch("http://10.0.2.2:5184/api/books")
         .then((res) => res.json())
-        .then((data) => setBooks(data))
+        .then((data) => {
+          setBooks(data);
+
+          const readBooks = data.filter((b) => b.isRead);
+          if (readBooks.length > 0) {
+            const randomIndex = Math.floor(Math.random() * readBooks.length);
+            setRandomReadBook(readBooks[randomIndex]);
+          } else {
+            setRandomReadBook(null);
+          }
+        })
         .catch((err) => console.error(err));
     }
   }, [activeTab]);
@@ -54,7 +64,7 @@ export default function App() {
           <View style={styles.separator} />
 
           <Text style={styles.header2}>Przeczytane</Text>
-          <ReadBookCard book={firstBook} />
+          <ReadBookCard book={randomReadBook || firstBook} />
         </View>
       )}
 

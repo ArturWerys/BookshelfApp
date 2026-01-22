@@ -82,10 +82,10 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: 'Inter',
     color: "#555",
-    marginTop: UNIT,               // 8px pod gwiazdkami lub autorem
+    marginTop: UNIT,               
   },
 
-  // ReadBookCard tekst obok obrazka
+ 
   textContainer: {
     flex: 1,
   },
