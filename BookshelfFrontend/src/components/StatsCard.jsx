@@ -22,7 +22,14 @@ const StatsCard = () => {
           genreCount[genre] = (genreCount[genre] || 0) + 1;
         });
 
-        const colors = ["#3b82f6", "#60a5fa", "#a5b4fc", "#c7d2fe", "#e0e7ff"];
+        const colors = [
+          "#3b82f6",
+          "#60a5fa",
+          "#a5b4fc",
+          "#c7d2fe",
+          "#e0e7ff",
+          "#4f46e5",
+        ];
         const genereChartData = Object.entries(genreCount)
           .map(([genre, count], idx) => ({
             value: count,
